@@ -98,7 +98,7 @@ cargo +nightly fmt
   features = ["test"] }` in the section `[dev-dependencies]` instead of repeating the
   dependencies already declared by the feature `test`.
 
-* A few crates define the features `wasmtime` and `wasmer`. For conveniency, these crates also
+* A few crates define the features `wasmtime` and `wasmer`. For convenience, these crates also
   define a `default` feature. As a consequence, these crates must always be included with
   the flag `no-default-features = true`. (This also applies to the self-dependencies of the
   previous rule.)
@@ -229,7 +229,7 @@ scrape_configs:
       - targets: ['localhost:9090']
 ```
 
-4. The Web app on `http://localhost:9090` provides a way to access to the metrics. Another way is to use the API as indicated below and the process the results.
+4. The Web app on `http://localhost:9090` provides a way to access to the metrics. Another way is to use the API as indicated below and process the results.
 5. The list of available metrics is available by looking at `http://localhost:9090/api/v1/label/__name__/values`
 6. The instantaneous value of a metric over all sources is accessed via `http://localhost:9090/api/v1/query?query=up` with `up` the metric sought.
 7. The values of metrics over an interval over all sources is accessed via `http://localhost:9090/api/v1/query_range?query=up&start=2023-01-04T12:00:00Z&end=2023-01-04T16:00:00Z&step=1s`.
