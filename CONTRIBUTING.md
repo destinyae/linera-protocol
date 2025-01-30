@@ -98,7 +98,7 @@ cargo +nightly fmt
   features = ["test"] }` in the section `[dev-dependencies]` instead of repeating the
   dependencies already declared by the feature `test`.
 
-* A few crates define the features `wasmtime` and `wasmer`. For conveniency, these crates also
+* A few crates define the features `wasmtime` and `wasmer`. For convenience, these crates also
   define a `default` feature. As a consequence, these crates must always be included with
   the flag `no-default-features = true`. (This also applies to the self-dependencies of the
   previous rule.)
@@ -176,12 +176,12 @@ command added just before the line declaring the test
 ```
 #[ntest::timeout(600000)]
 ```
-If the test lasts longer than the fixed time then it fails. The unit of time is millisecond, so the `600000` corresponds
+If the test lasts longer than the fixed time then it fails. The unit of time is a millisecond, so the `600000` corresponds
 to `600` seconds and so to `10` minutes.
 
 ### Tracking simultaneous threads in `tokio`
 
-The running of what is going on in `tokio` based programs can be difficult. The [tokio-console](https://crates.io/crates/tokio-console) crates allows to see
+The running of what is going on in `tokio` based programs can be difficult. The [tokio-console](https://crates.io/crates/tokio-console) crates allow to see
 the different threads going on. See [documentation of the user interface of tokio-console](https://docs.rs/tokio-console/0.1.9/tokio_console/) for more details.
 
 A simple way to use this on a laptop is the following:
@@ -190,7 +190,7 @@ A simple way to use this on a laptop is the following:
 2. Replace `tokio = "1.25.0"` by `tokio = { version = "1.25.0", features = ["full", "tracing"] }` in `Cargo.toml`
 3. Add `tokio-console = "0.1.9"` and `console-subscriber = "0.1.10"` to `Cargo.toml`
 4. Add `console-subscriber.workspace = true` to the relevant `Cargo.toml` subspace
-5. For the asynchronous tests in question, they have to be of the form `#[tokio::test]`. Tests of the form `#[test_log::test(tokio::test)]` are using a different instrumentation and we can use only one instrumentation at a time. The error is at runtime.
+5. For the asynchronous tests in question, they have to be of the form `#[tokio::test]`. Tests of the form `#[test_log::test(tokio::test)]` use a different instrumentation and we can use only one instrumentation at a time. The error is at runtime.
 6. For the test in question add the line `console_subscriber::init();` at the first line of the test.
 7. Run the test in question as usual.
 8. Then on a separate terminal, run the program tokio-console (which will listen to `http://127.0.0.1:6669/`).
